@@ -1,0 +1,68 @@
+.head{
+  background-color: rgb(148, 147, 147);
+  border:2px soild black; 
+  max-width:100%;
+  height:50px;
+  margin-top: 20px;
+}
+
+.hbtn{
+  height:100%;
+  width:80px;
+  cursor: pointer;
+  border:none;
+  /* border-color: rgb(101, 98, 98); */
+  margin-left: 20px;
+  background-color: rgb(202, 196, 196);
+}
+
+.hbtn:hover{
+  background-color: #696969;
+  color: white;
+}
+
+.frmTab{
+  border:2px solid black;
+  background-color: rgb(204, 204, 199);
+  height:auto;
+  padding:5px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.frmTab th,td{
+  padding: 5px;
+}
+
+.frm{
+  background-color: darkgrey;
+  padding:7px;
+  margin:5px;
+  width:45%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.frm input{
+  border:none;
+  border-radius: 4px;
+  height:23px;
+  width:50%;
+  padding:3px;
+}
+
+.frm label{
+  font-weight:bold;
+}
+
+.frm select{
+  width:35%;
+  height: 25px;
+}
+
+.frmTab tbody tr:hover{
+  background-color: rgb(211, 216, 217);
+}
+
+
