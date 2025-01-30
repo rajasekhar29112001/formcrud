@@ -5,7 +5,7 @@ const Detail = ({Data}) => {
         <>
             <hr/>
             <div class="frmTab">
-                <table border={2} style={{width:"100%",borderCollapse:"collapse",textAlign:"center"}}>
+                <table border={2} style={{width:"90%",borderCollapse:"collapse",margin:"5px"}}>
                     <thead style={{backgroundColor:"black",color:"white"}}>
                         <tr>
                             <th>S.No</th>

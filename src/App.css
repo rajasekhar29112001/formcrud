@@ -1,7 +1,6 @@
 .head{
   background-color: rgb(148, 147, 147);
-  border:2px soild black; 
-  max-width:100%;
+  width:100%;
   height:50px;
   margin-top: 20px;
 }
@@ -11,7 +10,6 @@
   width:80px;
   cursor: pointer;
   border:none;
-  /* border-color: rgb(101, 98, 98); */
   margin-left: 20px;
   background-color: rgb(202, 196, 196);
 }
@@ -23,18 +21,20 @@
 
 .frmTab{
   border:2px solid black;
-  background-color: rgb(204, 204, 199);
-  height:auto;
+  width:100%;
+  /* margin:5px; */
   padding:5px;
+  background-color: rgb(204, 204, 199);
   display:flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  overflow: auto;
 }
 
-.frmTab th,td{
+/* th,td{
   padding: 5px;
-}
+} */
 
 .frm{
   background-color: darkgrey;
@@ -65,4 +65,7 @@
   background-color: rgb(211, 216, 217);
 }
 
+.frmTab input{
+  max-width: 70%;
+}
 

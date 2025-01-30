@@ -1,9 +1,15 @@
 import React,{useState} from "react";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-const Form = ({obj,setObj,arr,setArr}) => {
+const Form = ({obj,setObj,arr,setArr,filArr,setFilArr}) => {
 
     const [bool,setBool] = useState(false);
     const [index,setIndex] = useState();
+    const [search,setSearch] = useState({id:"",name:"",email:"",age:"",doj:"",gender:""});
+    console.log("search =  ",search);
+    console.log("filArr = ",filArr)
     let {id,name,email,age,doj,gender,company,role,experience,stDate,enDate} = obj;
 
     function saveData(){
@@ -20,8 +26,6 @@ const Form = ({obj,setObj,arr,setArr}) => {
             alert("This id data already recorded.")
         } 
     }
-
-    console.log("array",arr);
 
     function deleteData(i){
         console.log(i,"this index will delete")
@@ -51,13 +55,30 @@ const Form = ({obj,setObj,arr,setArr}) => {
         setObj({id:"",name:"",email:"",age:"",doj:"",gender:"",company:"",role:"",experience:"",stDate:"",enDate:""});
     }
 
+    function searchData(e,key){
+        setSearch({...search,[key]:e.target.value});
+        filterData(e,key);
+    }
+
+    function filterData(e,key){
+        console.log("filterData e = ",e.target.value)
+        console.log("filterData key = ",key)
+        let value = e.target.value;
+
+        let filData = arr.filter((obj) => obj[key].includes(value));
+        console.log("filData =",filData);
+        console.log("filData.length =",filData.length);
+
+        setFilArr(filData);
+    }
+
     return(
         <>  
             <hr/>
             <div class="frmTab">
                 <div class="frm">
                     <h3>Personal Details</h3>
-                    <form>
+                    <form> 
                         <label>Id: <input type="number" value={obj.id} onChange={(e) => setObj({...obj,id:e.target.value})} placeholder="enter id"/></label><br/><br/>
                         <label>Name: <input type="text" value={obj.name} onChange={(e) => setObj({...obj,name:e.target.value})} placeholder="enter name"/></label><br/><br/>
                         <label>Mail: <input type="email" value={obj.email} onChange={(e) => setObj({...obj,email:e.target.value})} placeholder="enter mail"/></label><br/><br/>
@@ -87,7 +108,7 @@ const Form = ({obj,setObj,arr,setArr}) => {
             <hr/>
 
             <div class="frmTab">
-                <table border={3} style={{width:"100%",borderCollapse:"collapse",textAlign:"center"}}>
+                <table border={3} style={{borderCollapse:"collapse",marginBottom:"50px"}}>
                     <thead style={{backgroundColor:"black",color:"white"}}>
                         <tr>
                             <th>S.No</th>
@@ -95,15 +116,27 @@ const Form = ({obj,setObj,arr,setArr}) => {
                             <th>Name</th>
                             <th>Mail</th>
                             <th>Age</th>
-                            <th>Doj</th>
+                            <th>DOJ</th>
                             <th>Gender</th>
                             <th>Changes</th>
                             <th>Remove</th>
                         </tr>
+                        <tr>
+                            <th><AccountCircleIcon style={{marginTop:"4px"}}/></th>
+                            <th><input type="number" value={search.id} onChange={(e) => searchData(e,"id")}/></th>
+                            <th><input type="text" value={search.name} onChange={(e) => searchData(e,"name")}/></th>
+                            <th><input type="email" value={search.email} onChange={(e) => searchData(e,"email")}/></th>
+                            <th><input type="number" value={search.age} onChange={(e) => searchData(e,"age")}/></th>
+                            <th><input type="text" value={search.doj} onChange={(e) => searchData(e,"doj")}/></th>
+                            <th><input type="text" value={search.gender} onChange={(e) => searchData(e,"gender")}/></th>
+                            <th><EditIcon style={{marginTop:"4px"}}/></th>
+                            <th><DeleteIcon style={{marginTop:"4px"}}/></th>
+                        </tr>
                     </thead>
                     <tbody>
                         {
-                            arr.map((obj,i) => (
+                            filArr.length > 0 ?
+                            filArr.map((obj,i) => (
                                 <tr>
                                     <td>{i+1}</td>
                                     <td>{obj.id}</td>
@@ -115,7 +148,21 @@ const Form = ({obj,setObj,arr,setArr}) => {
                                     <td><button onClick={() => editData(i)}>Edit</button></td>
                                     <td><button onClick={() => deleteData(i)}>Delete</button></td>
                                 </tr>
-                            ))
+                            ))  : <tr><td colSpan={9}>No Data Found on your search</td></tr>
+                        
+                                    // ))  : arr.map((obj,i) => (
+                                    //     <tr>
+                                    //         <td>{i+1}</td>
+                                    //         <td>{obj.id}</td>
+                                    //         <td>{obj.name}</td>
+                                    //         <td>{obj.email}</td>
+                                    //         <td>{obj.age}</td>
+                                    //         <td>{obj.doj}</td>
+                                    //         <td>{obj.gender}</td>
+                                    //         <td><button onClick={() => editData(i)}>Edit</button></td>
+                                    //         <td><button onClick={() => deleteData(i)}>Delete</button></td>
+                                    //     </tr>
+                                    // ))
                         }
                     </tbody>
                 </table>
