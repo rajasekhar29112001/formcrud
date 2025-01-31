@@ -3,7 +3,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-const Form = ({obj,setObj,arr,setArr,filArr,setFilArr,search,setSearch}) => {
+const Form = () => {
+
+    const [obj,setObj] = useState({id:"",name:"",email:"",age:"",doj:"",gender:"",company:"",role:"",experience:"",stDate:"",enDate:""});
+    const [arr,setArr] = useState([]);
+    const [search,setSearch] = useState({id:"",name:"",email:"",age:"",doj:"",gender:""});
+    const [filArr,setFilArr] = useState([]);
 
     const [bool,setBool] = useState(false);
     const [index,setIndex] = useState();
@@ -74,8 +79,8 @@ const Form = ({obj,setObj,arr,setArr,filArr,setFilArr,search,setSearch}) => {
         setFilArr(filData);
     }
 
-    return(
-        <>  
+    return (
+        <>
             <hr/>
             <div class="frmTab">
                 <div class="frm">

@@ -9,6 +9,7 @@ const Head = () => {
 
     const [obj,setObj] = useState({id:"",name:"",email:"",age:"",doj:"",gender:"",company:"",role:"",experience:"",stDate:"",enDate:""});
     const [arr,setArr] = useState([]);
+    const [search,setSearch] = useState({id:"",name:"",email:"",age:"",doj:"",gender:""});
     const [filArr,setFilArr] = useState([]);
 
     return(
@@ -16,7 +17,7 @@ const Head = () => {
             <div class="head">
                 <button class="hbtn" onClick={() => setDisplay("Form")}>Form</button>
                 <button class="hbtn" onClick={() => setDisplay("Detail")}>Details</button>
-                {display === "Form" ? <Form obj={obj} setObj={setObj} arr={arr} setArr={setArr} filArr={filArr} setFilArr={setFilArr}/> : display === "Detail" ? <Detail Data={arr}/> : null}
+                {display === "Form" ? <Form obj={obj} setObj={setObj} arr={arr} setArr={setArr} filArr={filArr} setFilArr={setFilArr} search={search} setSearch={setSearch}/> : display === "Detail" ? <Detail Data={filArr} /> : null}
             </div> 
             <br/>
         </>

@@ -1,7 +1,7 @@
 import React from "react";
 
-const Detail = ({Data}) => {
-    return(
+const Details = ({Data}) => {
+    return (
         <>
             <hr/>
             <div class="frmTab">
@@ -41,4 +41,4 @@ const Detail = ({Data}) => {
     )
 }
 
-export default Detail;  
+export default Details;
